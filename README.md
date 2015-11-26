@@ -2,7 +2,7 @@
 ERCOS is an operating system for embedded platforms. I developed originally for the Sparc architecture, specifically for ERC-32 processor which is commonly used in spacecrafts.
 Later on, support for x86 was added.
 
-The project is currently not updated anymore but I make the source code available as I think it might be of interest for people wanting to know operating system internals.
+The project is **no longer updated** anymore but I make the source code available as I think it might be of interest for people wanting to know operating system internals.
 
 ## Configuration
 
