@@ -10,7 +10,7 @@ ifndef CONFIG_ERCOS_SIMU
 endif
 
 all:
-	@[ -d $(LIBDIR) ] || mkdirhier $(LIBDIR)
+	@[ -d $(LIBDIR) ] || mkdir -p $(LIBDIR)
 	@for i in $(LDIRS);do make DIR=lib/$$i -C $$i;done
 	@$(LD) -r -o $(ARCHDIR)/libkernel.o $(ARCHIVES)
 #	@$(AR) r $(LIBDIR)/libkernel.a $(ARCHDIR)/libkernel.o

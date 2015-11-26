@@ -18,17 +18,17 @@ first_rule: dummy
 # Common rules
 #
 .c.o:
-	@[ -d $(DEBUGDIR)/$(DIR) ] || mkdirhier $(DEBUGDIR)/$(DIR)
+	@[ -d $(DEBUGDIR)/$(DIR) ] || mkdir -p $(DEBUGDIR)/$(DIR)
 	@echo "	Compiling\t$(DIR)/$<"
 	@$(CC) $(CFLAGS) $(EXTRA_FLAGS) -c -o $(DEBUGDIR)/$(DIR)/$@ $(shell pwd)/$<
 	
 .cpp.o:
-	@[ -d $(DEBUGDIR)/$(DIR) ] || mkdirhier $(DEBUGDIR)/$(DIR)
+	@[ -d $(DEBUGDIR)/$(DIR) ] || mkdir -p $(DEBUGDIR)/$(DIR)
 	@echo "	Compiling\t$(DIR)/$<"
 	@$(CPP) $(CFLAGS) $(EXTRA_FLAGS) $(CXX_FLAGS) -c -o $(DEBUGDIR)/$(DIR)/$@ $(shell pwd)/$<
 	
 .S.o:
-	@[ -d $(DEBUGDIR)/$(DIR) ] || mkdirhier $(DEBUGDIR)/$(DIR)
+	@[ -d $(DEBUGDIR)/$(DIR) ] || mkdir -p $(DEBUGDIR)/$(DIR)
 	@echo "	Compiling\t$(DIR)/$<"
 	@$(CC) $(CFLAGS) -DST_DIV0=0x2 -I . -DASM -c -o $(DEBUGDIR)/$(DIR)/$@ $(shell pwd)/$<
 	
