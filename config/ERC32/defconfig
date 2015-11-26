@@ -1,0 +1,60 @@
+#
+# Automatically generated make config: don't edit
+#
+CONFIG_ARCH_SPARC=y
+CONFIG_PLATFORM_ERC32=y
+
+#
+# Architecture dependent Options
+#
+CONFIG_FAST_MODE=y
+# CONFIG_HAS_FPU is not set
+
+#
+# Load Options
+#
+CONFIG_RAMKERNEL=y
+# CONFIG_ROMKERNEL is not set
+
+#
+# Debug Options
+#
+CONFIG_DEBUG=y
+# CONFIG_ERCOS_SIMU is not set
+CONFIG_ERCOS_TRACER=y
+CONFIG_TRACER_BUF_SIZE=1024
+CONFIG_TRACER_NLEVELS=5
+# CONFIG_ERCOS_KERNEL_TRACER is not set
+# CONFIG_ERCOS_SYSCALL_TRACER is not set
+CONFIG_ERCOS_KERNEL_DISABLE_HIGHTRACE=y
+# CONFIG_GDB_MONITOR is not set
+
+#
+# Memory Management
+#
+# CONFIG_MM is not set
+
+#
+# POSIX Options
+#
+CONFIG_ERCOS_POSIX=y
+CONFIG_ERCOS_POSIX_TRACE=y
+
+#
+# EDROOM BPL compilation
+#
+CONFIG_PRIM_PP=y
+
+#
+# Test Bench
+#
+# CONFIG_ERCOS_AUTOMATIC_TEST is not set
+
+#
+# EDROOM Code
+#
+CONFIG_ERCOS_EDROOM_CODE=y
+# CONFIG_ERCOS_EDROOM_HELLOWORLD is not set
+# CONFIG_ERCOS_EDROOM_NANOSAT is not set
+CONFIG_ERCOS_EDROOM_MASTEXAMPLE=y
+# CONFIG_ERCOS_EDROOM_SERVERCONSUMER is not set

@@ -1,0 +1,28 @@
+/*
+ * This file must contain all the header files related with the CPU
+ */
+
+#ifndef _CPU_INLCUDES_
+#define _CPU_INLCUDES_
+
+//#include <simu_stub.h>
+
+
+//#define CPU_TIMER_TRAP  0               //  in timer.h
+//#define CPU_CLOCK_TRAP  0               //  in timer.h
+//#define CPU_TIMER_RESOLUTION    0       //  in timer.h
+//#define CPU_TIMER_COUNTER   0           //  in timer.h
+//#define CPU_NUMBER_OF_INTERRUPTS   0    //  in irq.h
+//#define CPU_TRAP_MIN_NUMBER 0           //  in irq.h
+//#define CPU_TRAP_MAX_NUMBER 0           //  in irq.h
+
+
+//#include <cpu/asm.h>
+//#include <cpu/cpu.h>
+//#include <cpu/cputypes.h>
+//#include <cpu/irq.h>
+//#include <cpu/psr.h>
+
+
+#endif
+

@@ -1,0 +1,17 @@
+#ifndef _TARGET_INLCUDES_
+#define _TARGET_INLCUDES_
+
+//#include <arch/erc32.h>
+//#include <arch/erc32-stub.h>
+//#include <arch/mec.h>
+//#include <arch/serial.h>
+//#include <arch/spurious.h>
+//#include <arch/timer.h>
+//#include <arch/asm.h>
+//
+//#ifdef CONFIG_DEBUG
+//#include <arch/spurious.h>
+//#endif 
+
+
+#endif

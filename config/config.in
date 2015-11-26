@@ -1,0 +1,155 @@
+#
+# For a description of the syntax of this configuration file,
+# see the Configure script.
+#
+
+#------------------------------------------------------------------------------
+# Kernel Debugging Options
+#------------------------------------------------------------------------------
+mainmenu_option next_comment
+comment 'Debug Options'
+
+bool 'Debug information'	CONFIG_DEBUG
+if [ "$CONFIG_DEBUG" = "y" ]; then
+
+bool 'Activate the Multiplatform Simulation'	CONFIG_ERCOS_SIMU
+
+if [ "$CONFIG_ERCOS_SIMU" = "y" ]; then
+define_bool CONFIG_ERCOS_TRACER y
+define_int CONFIG_TRACER_BUF_SIZE 0
+define_int CONFIG_TRACER_NLEVELS 0
+fi
+
+if [ "$CONFIG_ERCOS_SIMU" = "n" ]; then
+
+bool 'Activate the tracer'	CONFIG_ERCOS_TRACER
+
+
+	if [ "$CONFIG_ERCOS_TRACER" = "y" ]; then
+
+		int 'Tracer Buffer Size (in KB)'	CONFIG_TRACER_BUF_SIZE	1024
+
+		int 'Number of levels to be traced'	CONFIG_TRACER_NLEVELS	5
+
+		bool 'Activate the kernel trace'	CONFIG_ERCOS_KERNEL_TRACER
+
+		if [ "$CONFIG_ERCOS_KERNEL_TRACER" = "n" ]; then
+		bool 'Activate the syscall trace'	CONFIG_ERCOS_SYSCALL_TRACER
+		fi
+
+		bool 'Disable the high level trace'	CONFIG_ERCOS_KERNEL_DISABLE_HIGHTRACE
+
+	fi
+
+	bool 'Activate the GDB monitor'	CONFIG_GDB_MONITOR
+fi
+
+fi
+
+endmenu
+
+#------------------------------------------------------------------------------
+# Kernel Configuration Options
+#------------------------------------------------------------------------------
+mainmenu_option next_comment
+comment 'Kernel Configuration Options'
+
+	int 'Number of system priorities'	CONFIG_NUMBER_OF_PRIORITIES	8
+	int 'Kernel Stack Size (KB)'	CONFIG_KERNEL_STACK_SIZE	10
+
+endmenu
+#------------------------------------------------------------------------------
+# Memory Management Options
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'Memory Management'
+
+bool 'Memory Management'	CONFIG_MM
+
+endmenu
+
+#------------------------------------------------------------------------------
+# POSIX Options
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'POSIX Options'
+
+if [ "$CONFIG_ERCOS_SIMU" = "n" ]; then
+
+	bool 'Enable the POSIX Interface'	CONFIG_ERCOS_POSIX
+
+	if [ "$CONFIG_ERCOS_TRACER" = "y" ]; then
+	bool 'Enable the POSIX trace interface'	CONFIG_ERCOS_POSIX_TRACE
+	fi
+fi
+
+endmenu
+
+#------------------------------------------------------------------------------
+# EDROOM BPL Options
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'EDROOM BPL compilation'
+
+if [ "$CONFIG_ERCOS_SIMU" = "n" ]; then
+	if [ "$CONFIG_ERCOS_POSIX" = "y" ]; then
+	bool 'Compile the Prim_PP wrapper'	CONFIG_PRIM_PP
+	fi
+fi
+endmenu
+
+#------------------------------------------------------------------------------
+# Test Compilation Options
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'Test Bench'
+
+if [ "$CONFIG_ERCOS_SIMU" = "n" ]; then
+	if [ "$CONFIG_PRIM_PP" = "y" ]; then
+		bool 'Automatic Test'	CONFIG_ERCOS_AUTOMATIC_TEST
+
+		if [ "$CONFIG_ERCOS_AUTOMATIC_TEST" = "y" ]; then
+			bool 'Resource Semaphore Test'	CONFIG_ERCOS_REC_TEST
+			bool 'Pr_Send/Pr_Receive Test'	CONFIG_ERCOS_SEND_RECEIVE_TEST
+			bool 'Pr_Time Test'	CONFIG_ERCOS_TIME_TEST
+			bool 'Silent Resource Semaphore Test'	CONFIG_ERCOS_SIL_REC_TEST
+			bool 'Priority Ceiling Resource Semaphore Test'	CONFIG_ERCOS_PRIOCEILING_TEST
+			bool 'Pr_IRQManager Test'	CONFIG_ERCOS_IRQ_TEST
+			bool 'Context Switch Latency Test'	CONFIG_ERCOS_CTX_TEST
+			bool 'Interrupt Latency Test'	CONFIG_ERCOS_LAT_TEST
+			bool 'Miscellaneous Test'	CONFIG_ERCOS_MISC_TEST
+		fi
+	fi
+fi
+
+endmenu
+
+#------------------------------------------------------------------------------
+# EDROOM Code
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'EDROOM Code'
+
+if [ "$CONFIG_ERCOS_SIMU" = "n" ]; then
+	if [ "$CONFIG_PRIM_PP" = "y" ]; then
+		if [ "$CONFIG_ERCOS_AUTOMATIC_TEST" = "n" ]; then
+		bool 'EDROOM Code'	CONFIG_ERCOS_EDROOM_CODE
+		fi
+	fi
+
+	if [ "$CONFIG_ERCOS_EDROOM_CODE" = "y" ]; then
+	choice 'EDROOM Example' \
+	  "HelloWorld	CONFIG_ERCOS_EDROOM_HELLOWORLD	\
+	   NANOSAT		CONFIG_ERCOS_EDROOM_NANOSAT	\
+	   MASTExample		CONFIG_ERCOS_EDROOM_MASTEXAMPLE	\
+	   ServerConsumer	CONFIG_ERCOS_EDROOM_SERVERCONSUMER" NANOSAT
+	fi
+fi
+
+endmenu
+

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+CONFIG=.config_arch
+
+export PLATFORM
+export ARCH
+
+get_arch()
+{
+	PLATFORM="`grep '^CONFIG_DEFAULTS_PLATFORM_.*=y' ${CONFIG}`"
+	PLATFORM=${PLATFORM##CONFIG_DEFAULTS_PLATFORM_}
+	PLATFORM=${PLATFORM%%=y}
+	ARCH=`echo ${PLATFORM} | cut -f 1 -d _`
+	PLATFORM=`echo ${PLATFORM} | cut -f 2 -d _`
+	return 0
+}
+
+if get_arch; then
+	echo ${PLATFORM}
+else
+	echo "Unknown platform configuration." >&2
+	exit 1
+fi

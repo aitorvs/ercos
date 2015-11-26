@@ -1,0 +1,36 @@
+
+# For a description of the syntax of this configuration file,
+# see the Configure script.
+#
+
+mainmenu_name "ERC-32 Real Time Operating System (ERCOS-RT)"
+
+define_bool CONFIG_ARCH_SPARC y
+define_bool CONFIG_PLATFORM_ERC32 y
+
+define_int CONFIG_CLOCK_SPEED_MHZ	16
+
+#------------------------------------------------------------------------------
+# Architecture Dependent Configuration
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'Architecture dependent Options'
+bool 'Fast Kernel'	CONFIG_FAST_MODE
+int 'Stack Begin Address (in KB)'	CONFIG_STACK_BEGIN_ADDRESS	0x02400000
+bool 'Has Floating Point Unit (FPU)?'	CONFIG_HAS_FPU
+endmenu
+
+#------------------------------------------------------------------------------
+# Loading Options
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'Load Options'
+
+choice 'Kernel Linked from RAM/ROM' \
+	"RAM	CONFIG_RAMKERNEL" RAM
+	
+endmenu
+
+source config/config.in

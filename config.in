@@ -1,0 +1,14 @@
+mainmenu_name 'ERCOS-RT Configuration'
+mainmenu_option next_comment
+comment 'Target Platform Selection'
+comment 'Choose a Vendor/Product combination.'
+choice 'Vendor/Product' \
+"ERC32/TSIM CONFIG_DEFAULTS_PLATFORM_SPARC_ERC32 \
+LEON2/TSIM CONFIG_DEFAULTS_PLATFORM_SPARC_LEON2 \
+LEON3/TSIM CONFIG_DEFAULTS_PLATFORM_SPARC_LEON3 \
+M68332 CONFIG_DEFAULTS_PLATFORM_M68K_68332 \
+DUMMY CONFIG_DEFAULTS_PLATFORM_NOARCH_NOPLATFORM \
+" ERC32/TSIM
+
+bool 'Customize Vendor/User Settings'		CONFIG_DEFAULTS_VENDOR
+endmenu

@@ -1,0 +1,23 @@
+#
+# For a description of the syntax of this configuration file,
+# see the Configure script.
+#
+
+mainmenu_name "ERC-32 Real Time Operating System (ERCOS-RT)"
+
+#define_bool CONFIG_ARCH_NOARCH y
+#define_bool CONFIG_PLATFORM_NOPLATFORM y
+
+define_int CONFIG_CLOCK_SPEED_MHZ	16
+
+#------------------------------------------------------------------------------
+# Architecture Dependent Configuration
+#------------------------------------------------------------------------------
+
+mainmenu_option next_comment
+comment 'Architecture dependent Options'
+int 'Stack Begin Address (in KB)'	CONFIG_STACK_BEGIN_ADDRESS	0x02400000
+endmenu
+
+
+source config/config.in
