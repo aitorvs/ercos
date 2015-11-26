@@ -29,6 +29,21 @@ The compilation will place the kernel library inside ```image``` directory calle
 
 If a test was also compiled, the image ready to uploaded to the target processor will also be placed inside ```image``` folder.
 
+## Source code directory architecture
+
+The following is a bit of explanation on the source code directory tree.
+
+- ```arch/``` contains the architecture and platform specific code
+- ```config``` contains the kernel configuration files for the graphical user interface
+- ```gdb``` contains gdb stub implementation
+- ```include``` contains all kernel header files
+- ```kernel``` contains the kernel implementation. It is platform independent
+- ```init``` contains the kernel initialization. It is platform independent
+- ```posix``` contains a Posix interface implementation. It is supported on the kernel native interface
+- ```sys_tracer``` helper tool to parse the kernel trace so that it can be used with <a href="http://www.gti-ia.upv.es/sma/tools/kiwi/index.php">kiwi trace viewer</a>
+- ```test_new``` various test examples
+- ```tools``` contains some tools like the kiwi trace viewer executable
+
 ## Porting ERCOS
 
 I make the source code available more as reference code for people who want to know about the internals of an operating system but, however it is possible to port ERCOS to any other platform.
