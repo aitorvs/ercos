@@ -43,7 +43,7 @@ and substitude ```YOURPLATFOR``` and ```NEWARCHNAME``` and ```NEWPLATFORMNAME```
 
 2. Add the configuration menu specific to the architecture
  - create a sub-folder ```config/<platformName>```
- - create three files, ```config.in```, ```defconfig``` and ```link_<platformName>.ld. The first contains the configuration menus for your platform.
+ - create three files, ```config.in```, ```defconfig``` and ```link_<platformName>.ld```. The first contains the configuration menus for your platform.
  The second contains the default configuration (not mandatory). The third will be the link script for the linker.
  Take the ```config/DUMMY``` folder as example
 
